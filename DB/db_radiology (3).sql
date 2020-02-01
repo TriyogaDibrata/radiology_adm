@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 14, 2020 at 03:47 AM
+-- Generation Time: Feb 01, 2020 at 08:33 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.13
 
@@ -56,7 +56,10 @@ INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `p
 (9, 8, 9, 'Jenis Pemeriksaan', 'fa-th-list', '/jenis-pemeriksaans', '*', '2020-01-07 16:27:23', '2020-01-09 22:21:18'),
 (10, 8, 10, 'Modalitas', 'fa-briefcase', '/modalitas', '*', '2020-01-07 16:28:15', '2020-01-07 16:29:36'),
 (11, 8, 11, 'risiko', 'fa-line-chart', '/risikos', '*', '2020-01-07 16:29:11', '2020-01-09 22:21:51'),
-(12, 8, 0, 'Alat Perlindungan Diri', 'fa-shield', 'apds', '*', '2020-01-12 15:51:23', '2020-01-12 16:00:45');
+(12, 8, 0, 'Alat Perlindungan Diri', 'fa-shield', 'apds', '*', '2020-01-12 15:51:23', '2020-01-12 16:00:45'),
+(13, 8, 0, 'Jenis Pemeriksaan Files', 'fa-file-image-o', '/jenis-pemeriksaan-files', '*', '2020-01-29 05:52:06', '2020-01-29 05:52:06'),
+(14, 8, 0, 'Alat Perlindungan Diri Files', 'fa-file-image-o', 'apd-files', '*', '2020-01-29 07:42:13', '2020-01-29 07:42:13'),
+(15, 8, 0, 'Modalitas Files', 'fa-image', 'modalitas-files', '*', '2020-01-31 22:01:45', '2020-01-31 22:01:45');
 
 -- --------------------------------------------------------
 
@@ -948,7 +951,391 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (862, 1, 'admin/risikos', 'GET', '127.0.0.1', '{\"page\":\"1\",\"_pjax\":\"#pjax-container\"}', '2020-01-12 17:27:52', '2020-01-12 17:27:52'),
 (863, 1, 'admin/risikos/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-12 17:27:54', '2020-01-12 17:27:54'),
 (864, 1, 'admin/risikos/1', 'PUT', '127.0.0.1', '{\"dosis\":\"0,4 mGy\",\"risiko\":\"<p>Efek stokastik (bersifat kumulatif dalam tubuh), efek radiasi yang timbul setelah jangka waktu yang panjang seperti kanker, leukemia dan penyakit keturunan (genetik).<\\/p>\\r\\n\\r\\n<p>Untuk mencegah dan mengendalikan efek radiasi maka di perlukan upaya mengkonsumsi makanan yang mengandung protein meliputi telor, kacang ijo, susu dan vitamin.<\\/p>\",\"apd\":\"Baju Apron\\/baju anti radiasi\",\"apd_id\":\"1\",\"_token\":\"iDgwews6hNqt5WZXjiH6gSFuAQUSogFlzuMOeFvI\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/risikos?page=1\"}', '2020-01-12 17:27:58', '2020-01-12 17:27:58'),
-(865, 1, 'admin/risikos', 'GET', '127.0.0.1', '{\"page\":\"1\"}', '2020-01-12 17:27:58', '2020-01-12 17:27:58');
+(865, 1, 'admin/risikos', 'GET', '127.0.0.1', '{\"page\":\"1\"}', '2020-01-12 17:27:58', '2020-01-12 17:27:58'),
+(866, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-01-15 21:35:28', '2020-01-15 21:35:28'),
+(867, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-15 21:35:31', '2020-01-15 21:35:31'),
+(868, 1, 'admin', 'GET', '::1', '[]', '2020-01-16 17:40:32', '2020-01-16 17:40:32'),
+(869, 1, 'admin/apds', 'GET', '::1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-16 17:40:35', '2020-01-16 17:40:35'),
+(870, 1, 'admin/auth/logout', 'GET', '::1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-16 17:41:46', '2020-01-16 17:41:46'),
+(871, 1, 'admin', 'GET', '::1', '[]', '2020-01-16 17:46:35', '2020-01-16 17:46:35'),
+(872, 1, 'admin', 'GET', '::1', '[]', '2020-01-16 18:54:05', '2020-01-16 18:54:05'),
+(873, 1, 'admin/apds', 'GET', '::1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-16 18:54:08', '2020-01-16 18:54:08'),
+(874, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-01-29 05:38:53', '2020-01-29 05:38:53'),
+(875, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 05:38:55', '2020-01-29 05:38:55'),
+(876, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 05:43:05', '2020-01-29 05:43:05');
+INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `input`, `created_at`, `updated_at`) VALUES
+(877, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 05:44:20', '2020-01-29 05:44:20'),
+(878, 1, 'admin/auth/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 05:50:53', '2020-01-29 05:50:53'),
+(879, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 05:50:54', '2020-01-29 05:50:54'),
+(880, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"8\",\"title\":\"Jenis Pemeriksaan Files\",\"icon\":\"fa-file-image-o\",\"uri\":\"\\/jenis-pemeriksaan-files\",\"roles\":[\"1\",null],\"permission\":\"*\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 05:52:06', '2020-01-29 05:52:06'),
+(881, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-01-29 05:52:06', '2020-01-29 05:52:06'),
+(882, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-01-29 05:52:12', '2020-01-29 05:52:12'),
+(883, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 05:52:16', '2020-01-29 05:52:16'),
+(884, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 05:52:33', '2020-01-29 05:52:33'),
+(885, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:01:26', '2020-01-29 06:01:26'),
+(886, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:03:37', '2020-01-29 06:03:37'),
+(887, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:04:52', '2020-01-29 06:04:52'),
+(888, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:04:59', '2020-01-29 06:04:59'),
+(889, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"8\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:06:06', '2020-01-29 06:06:06'),
+(890, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:06:06', '2020-01-29 06:06:06'),
+(891, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"8\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:06:54', '2020-01-29 06:06:54'),
+(892, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:06:54', '2020-01-29 06:06:54'),
+(893, 1, 'admin/jenis-pemeriksaan-files/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:07:10', '2020-01-29 06:07:10'),
+(894, 1, 'admin/jenis-pemeriksaan-files/1/edit', 'GET', '127.0.0.1', '[]', '2020-01-29 06:10:20', '2020-01-29 06:10:20'),
+(895, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:10:23', '2020-01-29 06:10:23'),
+(896, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:11:42', '2020-01-29 06:11:42'),
+(897, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"8\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:11:52', '2020-01-29 06:11:52'),
+(898, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:11:52', '2020-01-29 06:11:52'),
+(899, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:12:07', '2020-01-29 06:12:07'),
+(900, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"8\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:12:16', '2020-01-29 06:12:16'),
+(901, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:12:17', '2020-01-29 06:12:17'),
+(902, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-01-29 06:14:52', '2020-01-29 06:14:52'),
+(903, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:14:55', '2020-01-29 06:14:55'),
+(904, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:14:57', '2020-01-29 06:14:57'),
+(905, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"8\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:15:55', '2020-01-29 06:15:55'),
+(906, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:15:55', '2020-01-29 06:15:55'),
+(907, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:18:53', '2020-01-29 06:18:53'),
+(908, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"8\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:19:01', '2020-01-29 06:19:01'),
+(909, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:19:01', '2020-01-29 06:19:01'),
+(910, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:19:03', '2020-01-29 06:19:03'),
+(911, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"8\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:19:14', '2020-01-29 06:19:14'),
+(912, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:19:15', '2020-01-29 06:19:15'),
+(913, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"8\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:19:22', '2020-01-29 06:19:22'),
+(914, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:19:23', '2020-01-29 06:19:23'),
+(915, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:19:57', '2020-01-29 06:19:57'),
+(916, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"3\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:20:53', '2020-01-29 06:20:53'),
+(917, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:20:53', '2020-01-29 06:20:53'),
+(918, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"3\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:21:03', '2020-01-29 06:21:03'),
+(919, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:21:03', '2020-01-29 06:21:03'),
+(920, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:21:26', '2020-01-29 06:21:26'),
+(921, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"3\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:21:36', '2020-01-29 06:21:36'),
+(922, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:21:36', '2020-01-29 06:21:36'),
+(923, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"3\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:21:50', '2020-01-29 06:21:50'),
+(924, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:21:50', '2020-01-29 06:21:50'),
+(925, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:21:57', '2020-01-29 06:21:57'),
+(926, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"2\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:22:16', '2020-01-29 06:22:16'),
+(927, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:22:16', '2020-01-29 06:22:16'),
+(928, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"2\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:22:26', '2020-01-29 06:22:26'),
+(929, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:22:26', '2020-01-29 06:22:26'),
+(930, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:22:29', '2020-01-29 06:22:29'),
+(931, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"1\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:22:43', '2020-01-29 06:22:43'),
+(932, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:22:43', '2020-01-29 06:22:43'),
+(933, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:22:45', '2020-01-29 06:22:45'),
+(934, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:23:24', '2020-01-29 06:23:24'),
+(935, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:23:32', '2020-01-29 06:23:32'),
+(936, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"1\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:23:41', '2020-01-29 06:23:41'),
+(937, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:23:41', '2020-01-29 06:23:41'),
+(938, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:23:44', '2020-01-29 06:23:44'),
+(939, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"18\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:24:09', '2020-01-29 06:24:09'),
+(940, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:24:09', '2020-01-29 06:24:09'),
+(941, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:24:10', '2020-01-29 06:24:10'),
+(942, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"18\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:24:20', '2020-01-29 06:24:20'),
+(943, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:24:20', '2020-01-29 06:24:20'),
+(944, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"18\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:24:35', '2020-01-29 06:24:35'),
+(945, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:24:35', '2020-01-29 06:24:35'),
+(946, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"18\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:24:50', '2020-01-29 06:24:50'),
+(947, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:24:50', '2020-01-29 06:24:50'),
+(948, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:25:40', '2020-01-29 06:25:40'),
+(949, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"4\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:26:00', '2020-01-29 06:26:00'),
+(950, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:26:00', '2020-01-29 06:26:00'),
+(951, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"4\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:26:08', '2020-01-29 06:26:08'),
+(952, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:26:08', '2020-01-29 06:26:08'),
+(953, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:26:10', '2020-01-29 06:26:10'),
+(954, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"21\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:26:27', '2020-01-29 06:26:27'),
+(955, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:26:27', '2020-01-29 06:26:27'),
+(956, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:26:29', '2020-01-29 06:26:29'),
+(957, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"21\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:26:38', '2020-01-29 06:26:38'),
+(958, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:26:38', '2020-01-29 06:26:38'),
+(959, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"21\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:26:46', '2020-01-29 06:26:46'),
+(960, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:26:46', '2020-01-29 06:26:46'),
+(961, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"21\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:27:02', '2020-01-29 06:27:02'),
+(962, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:27:02', '2020-01-29 06:27:02'),
+(963, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"page\":\"2\",\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:27:06', '2020-01-29 06:27:06'),
+(964, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:27:07', '2020-01-29 06:27:07'),
+(965, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:31:36', '2020-01-29 06:31:36'),
+(966, 1, 'admin/jenis-pemeriksaans/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:31:42', '2020-01-29 06:31:42'),
+(967, 1, 'admin/jenis-pemeriksaans', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan\":\"Pedis AP dan Oblique\",\"persiapan_pasien\":\"<p>1. Pastikan diri tidak sedang hamil atau usia kandungan anda telah di atas 3 bulan serta informasikan kehamilan anda kepada petugas. &nbsp; &nbsp; &nbsp; &nbsp;<\\/p>\\r\\n\\r\\n<p>2. Silahkan menghubungi petugas radiologi bila anda membutuhkan bantuan.<\\/p>\",\"manfaat\":\"Mengetahui kelainan pada tulang telapak dan jari kaki\",\"modalitas\":\"1\",\"deskripsi\":\"-\",\"risiko\":\"4\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaans\"}', '2020-01-29 06:33:30', '2020-01-29 06:33:30'),
+(968, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '[]', '2020-01-29 06:33:30', '2020-01-29 06:33:30'),
+(969, 1, 'admin/modalitas', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:33:42', '2020-01-29 06:33:42'),
+(970, 1, 'admin/risikos', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:33:48', '2020-01-29 06:33:48'),
+(971, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:34:08', '2020-01-29 06:34:08'),
+(972, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:34:11', '2020-01-29 06:34:11'),
+(973, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"35\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:34:20', '2020-01-29 06:34:20'),
+(974, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:34:20', '2020-01-29 06:34:20'),
+(975, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:34:22', '2020-01-29 06:34:22'),
+(976, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"35\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:34:28', '2020-01-29 06:34:28'),
+(977, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:34:28', '2020-01-29 06:34:28'),
+(978, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:34:30', '2020-01-29 06:34:30'),
+(979, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"35\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:34:37', '2020-01-29 06:34:37'),
+(980, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:34:37', '2020-01-29 06:34:37'),
+(981, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:34:38', '2020-01-29 06:34:38'),
+(982, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"35\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:34:46', '2020-01-29 06:34:46'),
+(983, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:34:46', '2020-01-29 06:34:46'),
+(984, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:35:44', '2020-01-29 06:35:44'),
+(985, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"10\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:36:14', '2020-01-29 06:36:14'),
+(986, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:36:14', '2020-01-29 06:36:14'),
+(987, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"10\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:36:24', '2020-01-29 06:36:24'),
+(988, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:36:24', '2020-01-29 06:36:24'),
+(989, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:36:25', '2020-01-29 06:36:25'),
+(990, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"10\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:36:34', '2020-01-29 06:36:34'),
+(991, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:36:34', '2020-01-29 06:36:34'),
+(992, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"10\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:36:42', '2020-01-29 06:36:42'),
+(993, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:36:42', '2020-01-29 06:36:42'),
+(994, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:37:18', '2020-01-29 06:37:18'),
+(995, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"20\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:37:48', '2020-01-29 06:37:48'),
+(996, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:37:48', '2020-01-29 06:37:48'),
+(997, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"20\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:37:55', '2020-01-29 06:37:55'),
+(998, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:37:55', '2020-01-29 06:37:55'),
+(999, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:37:57', '2020-01-29 06:37:57'),
+(1000, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"20\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:38:05', '2020-01-29 06:38:05'),
+(1001, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:38:05', '2020-01-29 06:38:05'),
+(1002, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"20\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:38:12', '2020-01-29 06:38:12'),
+(1003, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:38:13', '2020-01-29 06:38:13'),
+(1004, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"19\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:38:30', '2020-01-29 06:38:30'),
+(1005, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:38:31', '2020-01-29 06:38:31'),
+(1006, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"19\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:38:38', '2020-01-29 06:38:38'),
+(1007, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:38:38', '2020-01-29 06:38:38'),
+(1008, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:38:40', '2020-01-29 06:38:40'),
+(1009, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"19\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:38:48', '2020-01-29 06:38:48'),
+(1010, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:38:49', '2020-01-29 06:38:49'),
+(1011, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"19\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:38:56', '2020-01-29 06:38:56'),
+(1012, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:38:56', '2020-01-29 06:38:56'),
+(1013, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:39:18', '2020-01-29 06:39:18'),
+(1014, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"23\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:39:36', '2020-01-29 06:39:36'),
+(1015, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:39:36', '2020-01-29 06:39:36'),
+(1016, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"23\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:39:44', '2020-01-29 06:39:44'),
+(1017, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:39:45', '2020-01-29 06:39:45'),
+(1018, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"23\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:39:51', '2020-01-29 06:39:51'),
+(1019, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:39:51', '2020-01-29 06:39:51'),
+(1020, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:39:53', '2020-01-29 06:39:53'),
+(1021, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"23\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:40:03', '2020-01-29 06:40:03'),
+(1022, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:40:03', '2020-01-29 06:40:03'),
+(1023, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"6\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:40:28', '2020-01-29 06:40:28'),
+(1024, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:40:28', '2020-01-29 06:40:28'),
+(1025, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"6\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:40:36', '2020-01-29 06:40:36'),
+(1026, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:40:36', '2020-01-29 06:40:36'),
+(1027, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:40:39', '2020-01-29 06:40:39'),
+(1028, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"5\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:40:54', '2020-01-29 06:40:54'),
+(1029, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:40:54', '2020-01-29 06:40:54'),
+(1030, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"5\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:41:00', '2020-01-29 06:41:00'),
+(1031, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:41:01', '2020-01-29 06:41:01'),
+(1032, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:41:05', '2020-01-29 06:41:05'),
+(1033, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"13\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:41:21', '2020-01-29 06:41:21'),
+(1034, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:41:22', '2020-01-29 06:41:22'),
+(1035, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"13\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:41:28', '2020-01-29 06:41:28'),
+(1036, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:41:28', '2020-01-29 06:41:28'),
+(1037, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:41:30', '2020-01-29 06:41:30'),
+(1038, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"13\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:41:37', '2020-01-29 06:41:37'),
+(1039, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:41:37', '2020-01-29 06:41:37'),
+(1040, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"13\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:41:48', '2020-01-29 06:41:48'),
+(1041, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:41:48', '2020-01-29 06:41:48'),
+(1042, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"11\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:42:08', '2020-01-29 06:42:08'),
+(1043, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:42:08', '2020-01-29 06:42:08'),
+(1044, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"11\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:42:17', '2020-01-29 06:42:17'),
+(1045, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:42:17', '2020-01-29 06:42:17'),
+(1046, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"11\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:42:24', '2020-01-29 06:42:24'),
+(1047, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:42:24', '2020-01-29 06:42:24'),
+(1048, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"11\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:42:32', '2020-01-29 06:42:32'),
+(1049, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:42:32', '2020-01-29 06:42:32'),
+(1050, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"7\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:42:47', '2020-01-29 06:42:47'),
+(1051, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:42:47', '2020-01-29 06:42:47'),
+(1052, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"7\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:42:55', '2020-01-29 06:42:55'),
+(1053, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:42:55', '2020-01-29 06:42:55'),
+(1054, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"7\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:43:02', '2020-01-29 06:43:02'),
+(1055, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:43:02', '2020-01-29 06:43:02'),
+(1056, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"7\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:43:09', '2020-01-29 06:43:09'),
+(1057, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:43:09', '2020-01-29 06:43:09'),
+(1058, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"12\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:43:48', '2020-01-29 06:43:48'),
+(1059, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:43:48', '2020-01-29 06:43:48'),
+(1060, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"12\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:43:59', '2020-01-29 06:43:59'),
+(1061, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:43:59', '2020-01-29 06:43:59'),
+(1062, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"12\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:44:07', '2020-01-29 06:44:07'),
+(1063, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:44:07', '2020-01-29 06:44:07'),
+(1064, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"12\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:44:14', '2020-01-29 06:44:14'),
+(1065, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:44:14', '2020-01-29 06:44:14'),
+(1066, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"17\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:44:33', '2020-01-29 06:44:33'),
+(1067, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:44:33', '2020-01-29 06:44:33'),
+(1068, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"17\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:44:42', '2020-01-29 06:44:42'),
+(1069, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:44:42', '2020-01-29 06:44:42'),
+(1070, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"17\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:44:50', '2020-01-29 06:44:50'),
+(1071, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:44:51', '2020-01-29 06:44:51'),
+(1072, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"17\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:44:58', '2020-01-29 06:44:58'),
+(1073, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:44:58', '2020-01-29 06:44:58'),
+(1074, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"16\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:45:14', '2020-01-29 06:45:14'),
+(1075, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:45:14', '2020-01-29 06:45:14'),
+(1076, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"16\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:45:20', '2020-01-29 06:45:20'),
+(1077, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:45:20', '2020-01-29 06:45:20'),
+(1078, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:45:22', '2020-01-29 06:45:22'),
+(1079, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"16\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:45:28', '2020-01-29 06:45:28'),
+(1080, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:45:28', '2020-01-29 06:45:28'),
+(1081, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"16\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:45:35', '2020-01-29 06:45:35'),
+(1082, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:45:35', '2020-01-29 06:45:35'),
+(1083, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"15\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:45:56', '2020-01-29 06:45:56'),
+(1084, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:45:56', '2020-01-29 06:45:56'),
+(1085, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"15\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:46:05', '2020-01-29 06:46:05'),
+(1086, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:46:05', '2020-01-29 06:46:05'),
+(1087, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:46:06', '2020-01-29 06:46:06'),
+(1088, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"15\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:46:14', '2020-01-29 06:46:14'),
+(1089, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:46:14', '2020-01-29 06:46:14'),
+(1090, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"15\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:46:24', '2020-01-29 06:46:24'),
+(1091, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:46:24', '2020-01-29 06:46:24'),
+(1092, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"22\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:46:40', '2020-01-29 06:46:40'),
+(1093, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:46:40', '2020-01-29 06:46:40'),
+(1094, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"22\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:46:48', '2020-01-29 06:46:48'),
+(1095, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:46:48', '2020-01-29 06:46:48'),
+(1096, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"9\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:47:03', '2020-01-29 06:47:03'),
+(1097, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:47:03', '2020-01-29 06:47:03'),
+(1098, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"9\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:47:13', '2020-01-29 06:47:13'),
+(1099, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:47:13', '2020-01-29 06:47:13'),
+(1100, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:47:14', '2020-01-29 06:47:14'),
+(1101, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"9\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/jenis-pemeriksaan-files\"}', '2020-01-29 06:47:22', '2020-01-29 06:47:22'),
+(1102, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:47:22', '2020-01-29 06:47:22'),
+(1103, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"9\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:47:31', '2020-01-29 06:47:31'),
+(1104, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:47:32', '2020-01-29 06:47:32'),
+(1105, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:47:37', '2020-01-29 06:47:37'),
+(1106, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"page\":\"4\",\"_pjax\":\"#pjax-container\"}', '2020-01-29 06:47:41', '2020-01-29 06:47:41'),
+(1107, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"14\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:48:04', '2020-01-29 06:48:04'),
+(1108, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:48:04', '2020-01-29 06:48:04'),
+(1109, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"14\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:48:15', '2020-01-29 06:48:15'),
+(1110, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:48:15', '2020-01-29 06:48:15'),
+(1111, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"14\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 06:48:24', '2020-01-29 06:48:24'),
+(1112, 1, 'admin/jenis-pemeriksaan-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 06:48:25', '2020-01-29 06:48:25'),
+(1113, 1, 'admin/jenis-pemeriksaan-files', 'POST', '127.0.0.1', '{\"jenis_pemeriksaan_id\":\"14\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 06:48:32', '2020-01-29 06:48:32'),
+(1114, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-29 06:48:32', '2020-01-29 06:48:32'),
+(1115, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 07:40:52', '2020-01-29 07:40:52'),
+(1116, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"8\",\"title\":\"Alat Perlindungan Diri Files\",\"icon\":\"fa-file-image-o\",\"uri\":\"apd-files\",\"roles\":[\"1\",null],\"permission\":\"*\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 07:42:13', '2020-01-29 07:42:13'),
+(1117, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-01-29 07:42:13', '2020-01-29 07:42:13'),
+(1118, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 07:42:19', '2020-01-29 07:42:19'),
+(1119, 1, 'admin/apds', 'GET', '127.0.0.1', '[]', '2020-01-29 07:42:21', '2020-01-29 07:42:21'),
+(1120, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 07:42:23', '2020-01-29 07:42:23'),
+(1121, 1, 'admin/apd-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 07:42:29', '2020-01-29 07:42:29'),
+(1122, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 07:42:31', '2020-01-29 07:42:31'),
+(1123, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 07:43:05', '2020-01-29 07:43:05'),
+(1124, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 07:44:52', '2020-01-29 07:44:52'),
+(1125, 1, 'admin/apd-files', 'POST', '127.0.0.1', '{\"apd\":\"1\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 07:45:34', '2020-01-29 07:45:34'),
+(1126, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 07:45:34', '2020-01-29 07:45:34'),
+(1127, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 07:45:46', '2020-01-29 07:45:46'),
+(1128, 1, 'admin/apd-files', 'POST', '127.0.0.1', '{\"apd_id\":\"1\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 07:45:55', '2020-01-29 07:45:55'),
+(1129, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-29 07:45:55', '2020-01-29 07:45:55'),
+(1130, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 07:45:57', '2020-01-29 07:45:57'),
+(1131, 1, 'admin/apd-files', 'POST', '127.0.0.1', '{\"apd_id\":\"1\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/apd-files\"}', '2020-01-29 07:46:06', '2020-01-29 07:46:06'),
+(1132, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 07:46:07', '2020-01-29 07:46:07'),
+(1133, 1, 'admin/apd-files', 'POST', '127.0.0.1', '{\"apd_id\":\"2\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\"}', '2020-01-29 07:46:21', '2020-01-29 07:46:21'),
+(1134, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 07:46:21', '2020-01-29 07:46:21'),
+(1135, 1, 'admin/apd-files', 'POST', '127.0.0.1', '{\"apd_id\":\"2\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 07:46:31', '2020-01-29 07:46:31'),
+(1136, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-29 07:46:31', '2020-01-29 07:46:31'),
+(1137, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-29 07:46:33', '2020-01-29 07:46:33'),
+(1138, 1, 'admin/apd-files', 'POST', '127.0.0.1', '{\"apd_id\":\"3\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/apd-files\"}', '2020-01-29 07:46:46', '2020-01-29 07:46:46'),
+(1139, 1, 'admin/apd-files/create', 'GET', '127.0.0.1', '[]', '2020-01-29 07:46:46', '2020-01-29 07:46:46'),
+(1140, 1, 'admin/apd-files', 'POST', '127.0.0.1', '{\"apd_id\":\"3\",\"_token\":\"Dd4n4frMBDf61Lp39FFOHjCLGUbq8fjN6doUSBJv\"}', '2020-01-29 07:46:53', '2020-01-29 07:46:53'),
+(1141, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-29 07:46:53', '2020-01-29 07:46:53'),
+(1142, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-30 19:27:30', '2020-01-30 19:27:30'),
+(1143, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-30 19:27:41', '2020-01-30 19:27:41'),
+(1144, 1, 'admin/apd-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-30 19:28:10', '2020-01-30 19:28:10'),
+(1145, 1, 'admin', 'GET', '127.0.0.1', '[]', '2020-01-31 22:00:08', '2020-01-31 22:00:08'),
+(1146, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:00:23', '2020-01-31 22:00:23'),
+(1147, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"8\",\"title\":\"Modalitas Files\",\"icon\":\"fa-image\",\"uri\":\"modalitas-files\",\"roles\":[\"1\",null],\"permission\":\"*\",\"_token\":\"jx2Ip7xHlTsyTvSY1cSDVwIIc2ysXU0EHN0h0J1C\"}', '2020-01-31 22:01:44', '2020-01-31 22:01:44'),
+(1148, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-01-31 22:01:45', '2020-01-31 22:01:45'),
+(1149, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2020-01-31 22:01:55', '2020-01-31 22:01:55'),
+(1150, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:01:57', '2020-01-31 22:01:57'),
+(1151, 1, 'admin/modalitas-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:01:59', '2020-01-31 22:01:59'),
+(1152, 1, 'admin/modalitas-files/create', 'GET', '127.0.0.1', '[]', '2020-01-31 22:04:08', '2020-01-31 22:04:08'),
+(1153, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:04:24', '2020-01-31 22:04:24'),
+(1154, 1, 'admin/risikos', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:04:34', '2020-01-31 22:04:34'),
+(1155, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:04:36', '2020-01-31 22:04:36'),
+(1156, 1, 'admin/apds', 'GET', '127.0.0.1', '[]', '2020-01-31 22:06:14', '2020-01-31 22:06:14'),
+(1157, 1, 'admin/apds', 'GET', '127.0.0.1', '[]', '2020-01-31 22:06:31', '2020-01-31 22:06:31'),
+(1158, 1, 'admin/apds', 'GET', '127.0.0.1', '[]', '2020-01-31 22:06:43', '2020-01-31 22:06:43'),
+(1159, 1, 'admin/apds/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:07:17', '2020-01-31 22:07:17'),
+(1160, 1, 'admin/apds/create', 'GET', '127.0.0.1', '[]', '2020-01-31 22:07:34', '2020-01-31 22:07:34'),
+(1161, 1, 'admin/apds/create', 'GET', '127.0.0.1', '[]', '2020-01-31 22:07:56', '2020-01-31 22:07:56'),
+(1162, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:08:54', '2020-01-31 22:08:54'),
+(1163, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:08:58', '2020-01-31 22:08:58'),
+(1164, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:09:31', '2020-01-31 22:09:31'),
+(1165, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:12:02', '2020-01-31 22:12:02'),
+(1166, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:12:11', '2020-01-31 22:12:11'),
+(1167, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:16:01', '2020-01-31 22:16:01'),
+(1168, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:17:34', '2020-01-31 22:17:34'),
+(1169, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:20:47', '2020-01-31 22:20:47'),
+(1170, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:22:11', '2020-01-31 22:22:11'),
+(1171, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:22:20', '2020-01-31 22:22:20'),
+(1172, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:22:23', '2020-01-31 22:22:23'),
+(1173, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:23:13', '2020-01-31 22:23:13'),
+(1174, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:24:19', '2020-01-31 22:24:19'),
+(1175, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:25:29', '2020-01-31 22:25:29'),
+(1176, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:28:00', '2020-01-31 22:28:00'),
+(1177, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:28:20', '2020-01-31 22:28:20'),
+(1178, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:29:01', '2020-01-31 22:29:01'),
+(1179, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:31:07', '2020-01-31 22:31:07'),
+(1180, 1, 'admin/apd-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:31:19', '2020-01-31 22:31:19'),
+(1181, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:33:04', '2020-01-31 22:33:04');
+INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `input`, `created_at`, `updated_at`) VALUES
+(1182, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:33:23', '2020-01-31 22:33:23'),
+(1183, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:33:24', '2020-01-31 22:33:24'),
+(1184, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:33:27', '2020-01-31 22:33:27'),
+(1185, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:33:46', '2020-01-31 22:33:46'),
+(1186, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:33:53', '2020-01-31 22:33:53'),
+(1187, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:33:56', '2020-01-31 22:33:56'),
+(1188, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '[]', '2020-01-31 22:34:43', '2020-01-31 22:34:43'),
+(1189, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '[]', '2020-01-31 22:35:49', '2020-01-31 22:35:49'),
+(1190, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '[]', '2020-01-31 22:35:59', '2020-01-31 22:35:59'),
+(1191, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '[]', '2020-01-31 22:36:53', '2020-01-31 22:36:53'),
+(1192, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '[]', '2020-01-31 22:37:01', '2020-01-31 22:37:01'),
+(1193, 1, 'admin/modalitas', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:37:36', '2020-01-31 22:37:36'),
+(1194, 1, 'admin/modalitas', 'GET', '127.0.0.1', '[]', '2020-01-31 22:38:00', '2020-01-31 22:38:00'),
+(1195, 1, 'admin/modalitas', 'GET', '127.0.0.1', '[]', '2020-01-31 22:38:05', '2020-01-31 22:38:05'),
+(1196, 1, 'admin/risikos', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:38:09', '2020-01-31 22:38:09'),
+(1197, 1, 'admin/modalitas', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:38:23', '2020-01-31 22:38:23'),
+(1198, 1, 'admin/modalitas', 'GET', '127.0.0.1', '[]', '2020-01-31 22:39:50', '2020-01-31 22:39:50'),
+(1199, 1, 'admin/modalitas', 'GET', '127.0.0.1', '[]', '2020-01-31 22:40:11', '2020-01-31 22:40:11'),
+(1200, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:40:38', '2020-01-31 22:40:38'),
+(1201, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '[]', '2020-01-31 22:40:38', '2020-01-31 22:40:38'),
+(1202, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '[]', '2020-01-31 22:40:55', '2020-01-31 22:40:55'),
+(1203, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:40:59', '2020-01-31 22:40:59'),
+(1204, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:41:05', '2020-01-31 22:41:05'),
+(1205, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:41:13', '2020-01-31 22:41:13'),
+(1206, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:41:50', '2020-01-31 22:41:50'),
+(1207, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:42:28', '2020-01-31 22:42:28'),
+(1208, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:42:49', '2020-01-31 22:42:49'),
+(1209, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:43:08', '2020-01-31 22:43:08'),
+(1210, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:45:59', '2020-01-31 22:45:59'),
+(1211, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:46:20', '2020-01-31 22:46:20'),
+(1212, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:46:57', '2020-01-31 22:46:57'),
+(1213, 1, 'admin/apd-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:47:11', '2020-01-31 22:47:11'),
+(1214, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:47:30', '2020-01-31 22:47:30'),
+(1215, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:47:32', '2020-01-31 22:47:32'),
+(1216, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:47:36', '2020-01-31 22:47:36'),
+(1217, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:48:06', '2020-01-31 22:48:06'),
+(1218, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:48:10', '2020-01-31 22:48:10'),
+(1219, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:48:24', '2020-01-31 22:48:24'),
+(1220, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:49:32', '2020-01-31 22:49:32'),
+(1221, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:49:42', '2020-01-31 22:49:42'),
+(1222, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:49:46', '2020-01-31 22:49:46'),
+(1223, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:49:53', '2020-01-31 22:49:53'),
+(1224, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:50:11', '2020-01-31 22:50:11'),
+(1225, 1, 'admin/apd-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:50:19', '2020-01-31 22:50:19'),
+(1226, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:50:22', '2020-01-31 22:50:22'),
+(1227, 1, 'admin/modalitas', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:50:24', '2020-01-31 22:50:24'),
+(1228, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:50:25', '2020-01-31 22:50:25'),
+(1229, 1, 'admin/jenis-pemeriksaans', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:50:27', '2020-01-31 22:50:27'),
+(1230, 1, 'admin/modalitas', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:52:20', '2020-01-31 22:52:20'),
+(1231, 1, 'admin/risikos', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:52:22', '2020-01-31 22:52:22'),
+(1232, 1, 'admin/risikos', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\",\"page\":\"2\"}', '2020-01-31 22:52:28', '2020-01-31 22:52:28'),
+(1233, 1, 'admin/apds', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:52:33', '2020-01-31 22:52:33'),
+(1234, 1, 'admin/jenis-pemeriksaan-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:52:36', '2020-01-31 22:52:36'),
+(1235, 1, 'admin/apd-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:52:37', '2020-01-31 22:52:37'),
+(1236, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:52:38', '2020-01-31 22:52:38'),
+(1237, 1, 'admin/modalitas-files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2020-01-31 22:52:43', '2020-01-31 22:52:43'),
+(1238, 1, 'admin/modalitas-files', 'POST', '127.0.0.1', '{\"modalitas_id\":\"1\",\"_token\":\"jx2Ip7xHlTsyTvSY1cSDVwIIc2ysXU0EHN0h0J1C\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/modalitas-files\"}', '2020-01-31 22:53:45', '2020-01-31 22:53:45'),
+(1239, 1, 'admin/modalitas-files/create', 'GET', '127.0.0.1', '[]', '2020-01-31 22:53:46', '2020-01-31 22:53:46'),
+(1240, 1, 'admin/modalitas-files/create', 'GET', '127.0.0.1', '[]', '2020-01-31 22:54:38', '2020-01-31 22:54:38'),
+(1241, 1, 'admin/modalitas-files', 'POST', '127.0.0.1', '{\"modalitas_id\":\"1\",\"_token\":\"jx2Ip7xHlTsyTvSY1cSDVwIIc2ysXU0EHN0h0J1C\"}', '2020-01-31 22:54:45', '2020-01-31 22:54:45'),
+(1242, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:54:45', '2020-01-31 22:54:45'),
+(1243, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:55:46', '2020-01-31 22:55:46'),
+(1244, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:55:51', '2020-01-31 22:55:51'),
+(1245, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:56:03', '2020-01-31 22:56:03'),
+(1246, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:57:43', '2020-01-31 22:57:43'),
+(1247, 1, 'admin/modalitas-files', 'GET', '127.0.0.1', '[]', '2020-01-31 22:58:23', '2020-01-31 22:58:23');
 
 -- --------------------------------------------------------
 
@@ -1021,7 +1408,10 @@ INSERT INTO `admin_role_menu` (`role_id`, `menu_id`, `created_at`, `updated_at`)
 (1, 9, NULL, NULL),
 (1, 10, NULL, NULL),
 (1, 11, NULL, NULL),
-(1, 12, NULL, NULL);
+(1, 12, NULL, NULL),
+(1, 13, NULL, NULL),
+(1, 14, NULL, NULL),
+(1, 15, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1085,7 +1475,7 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$.Yq10KPeYfhjNQ8IjS8NBOLAWxa4yg3UczSO/HH11M.89ShtUE6ie', 'Administrator', NULL, 'M6gqnCj5hbbizcoH3Wc1COsGDvHmyDOlX6tYInuyAz2naEXBklyPAcOmPy3D', '2020-01-07 16:20:40', '2020-01-07 16:20:40');
+(1, 'admin', '$2y$10$.Yq10KPeYfhjNQ8IjS8NBOLAWxa4yg3UczSO/HH11M.89ShtUE6ie', 'Administrator', NULL, 'iFSW9b2dEH8XYWGmqBDshNy23RdH2mXrWcnA99TFekyAxdhlyPK5T0I9dI8L', '2020-01-07 16:20:40', '2020-01-07 16:20:40');
 
 -- --------------------------------------------------------
 
@@ -1165,6 +1555,33 @@ INSERT INTO `m_apd` (`id`, `apd`, `deskripsi`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `m_apd_files`
+--
+
+CREATE TABLE `m_apd_files` (
+  `id` int(11) NOT NULL,
+  `apd_id` int(11) NOT NULL,
+  `file_path` varchar(200) DEFAULT NULL,
+  `file_name` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `m_apd_files`
+--
+
+INSERT INTO `m_apd_files` (`id`, `apd_id`, `file_path`, `file_name`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, 'images/3681c808d1dd71d124b53a7cb3f36d20.jpg', '2020-01-29 07:45:55', '2020-01-29 07:45:55'),
+(2, 1, NULL, 'images/8858073fcf1f2fccc00cde99873083e1.jpg', '2020-01-29 07:46:06', '2020-01-29 07:46:06'),
+(3, 2, NULL, 'images/523fd19ec013c25b260f88a7660ba5f3.jpg', '2020-01-29 07:46:21', '2020-01-29 07:46:21'),
+(4, 2, NULL, 'images/a2bfcb4e63dc5b993f2ebef1ed983378.jpg', '2020-01-29 07:46:31', '2020-01-29 07:46:31'),
+(5, 3, NULL, 'images/f29df727419324b3cd2a30b13a79c89f.jpg', '2020-01-29 07:46:46', '2020-01-29 07:46:46'),
+(6, 3, NULL, 'images/bb3ee8959d527a4d758c6bd63e518d52.jpg', '2020-01-29 07:46:53', '2020-01-29 07:46:53');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `m_jenis_pemeriksaan`
 --
 
@@ -1218,7 +1635,113 @@ INSERT INTO `m_jenis_pemeriksaan` (`id`, `jenis_pemeriksaan`, `persiapan_pasien`
 (31, 'CT Scan Kepala', '<p>1. Pastikan diri tidak sedang hamil atau usia kandungan anda telah di atas 3 bulan serta informasikan kehamilan anda kepada petugas.&nbsp;</p>\r\n\r\n<p>2. Mohon melepaskan perhiasan/aksesoris dari logam yang sedang anda pakai dan simpan pada tempat yang aman. Kami tidak bertanggung jawab atas kehilangan benda tersebut.</p>\r\n\r\n<p>3. Silahkan menghubungi petugas radiologi bila anda membutuhkan bantuan.</p>', 'Mengetahui  kelainan tumor, infeksi, perdarahan dan keretakan tulang kepala', 3, '-', 19, '2020-01-09 18:03:15', '2020-01-12 05:22:35'),
 (32, 'CT Scan Thorax', '<p>1. Pastikan diri tidak sedang hamil atau usia kandungan anda telah di atas 3 bulan serta informasikan kehamilan anda kepada petugas.</p>\r\n\r\n<p>2. Mohon melepaskan perhiasan/aksesoris dari logam yang sedang anda pakai dan simpan pada tempat yang aman. Kami tidak bertanggung jawab atas kehilangan benda tersebut.&nbsp;</p>\r\n\r\n<p>3. Demi kepentingan pemeriksaan, petugas akan meminta anda untuk menggantikan baju serta pakaian dalam (BH) dengan pakaian yang telah disediakan.</p>\r\n\r\n<p>4. Silahkan menghubungi petugas radiologi bila anda membutuhkan bantuan.</p>', 'Mengetahui kelainan infeksi, emboli paru, tumor paru, penyebaran kanker dari organ lain ke daerah dada serta maslah pada jantung', 3, '-', 9, '2020-01-09 18:04:42', '2020-01-12 05:22:46'),
 (33, 'CT Scan Abdomen', '<p>1. Tidak makan dan minum 3-6 jam sebelum pemeriksaan.&nbsp;</p>\r\n\r\n<p>2. Mohon melepaskan perhiasan/aksesoris dari logam yang sedang anda pakai dan simpan pada tempat yang aman. Kami tidak bertanggung jawab atas kehilangan benda tersebut.&nbsp;</p>\r\n\r\n<p>3. Sehari sebelum pemeriksaan tidak mengkonsumsi makanan padat.</p>', 'Mengetahui kelainan infeksi, kista, abses, tumor, perdarahan pada organ abdomen', 3, '-', 20, '2020-01-09 18:05:30', '2020-01-12 05:23:07'),
-(34, 'Ct Scan Spine', '<p>1. Pastikan diri tidak sedang hamil atau usia kandungan anda telah di atas 3 bulan serta informasikan kehamilan anda kepada petugas.</p>\r\n\r\n<p>2. Mohon melepaskan perhiasan/aksesoris dari logam yang sedang anda pakai dan simpan pada tempat yang aman. Kami tidak bertanggung jawab atas kehilangan benda tersebut.&nbsp;</p>\r\n\r\n<p>3. Demi kepentingan pemeriksaan, petugas akan meminta anda untuk menggantikan baju serta pakaian dalam (BH) dengan pakaian yang telah disediakan.</p>\r\n\r\n<p>4. Silahkan menghubungi petugas radiologi bila anda membutuhkan bantuan.</p>', 'Mengetahui kelainan struktur dan celah sendi serta saraf tulang belang', 3, '-', 21, '2020-01-09 18:06:48', '2020-01-12 05:23:19');
+(34, 'Ct Scan Spine', '<p>1. Pastikan diri tidak sedang hamil atau usia kandungan anda telah di atas 3 bulan serta informasikan kehamilan anda kepada petugas.</p>\r\n\r\n<p>2. Mohon melepaskan perhiasan/aksesoris dari logam yang sedang anda pakai dan simpan pada tempat yang aman. Kami tidak bertanggung jawab atas kehilangan benda tersebut.&nbsp;</p>\r\n\r\n<p>3. Demi kepentingan pemeriksaan, petugas akan meminta anda untuk menggantikan baju serta pakaian dalam (BH) dengan pakaian yang telah disediakan.</p>\r\n\r\n<p>4. Silahkan menghubungi petugas radiologi bila anda membutuhkan bantuan.</p>', 'Mengetahui kelainan struktur dan celah sendi serta saraf tulang belang', 3, '-', 21, '2020-01-09 18:06:48', '2020-01-12 05:23:19'),
+(35, 'Pedis AP dan Oblique', '<p>1. Pastikan diri tidak sedang hamil atau usia kandungan anda telah di atas 3 bulan serta informasikan kehamilan anda kepada petugas. &nbsp; &nbsp; &nbsp; &nbsp;</p>\r\n\r\n<p>2. Silahkan menghubungi petugas radiologi bila anda membutuhkan bantuan.</p>', 'Mengetahui kelainan pada tulang telapak dan jari kaki', 1, '-', 4, '2020-01-29 06:33:30', '2020-01-29 06:33:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_jenis_pemeriksaan_files`
+--
+
+CREATE TABLE `m_jenis_pemeriksaan_files` (
+  `id` int(11) NOT NULL,
+  `jenis_pemeriksaan_id` int(11) NOT NULL,
+  `filepath` varchar(200) DEFAULT NULL,
+  `file_name` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `m_jenis_pemeriksaan_files`
+--
+
+INSERT INTO `m_jenis_pemeriksaan_files` (`id`, `jenis_pemeriksaan_id`, `filepath`, `file_name`, `created_at`, `updated_at`) VALUES
+(3, 8, NULL, 'images/2ed6de15e34b58dfc500234498321f24.jpg', '2020-01-29 06:15:55', '2020-01-29 06:15:55'),
+(4, 8, NULL, 'images/209e0afb1a818c9c4e70c76606c0ec43.jpg', '2020-01-29 06:19:01', '2020-01-29 06:19:01'),
+(5, 8, NULL, 'images/aea21a163013d3690804e46bd410c5de.jpg', '2020-01-29 06:19:14', '2020-01-29 06:19:14'),
+(6, 8, NULL, 'images/2cd6528650af056e73533ccaeed8f83a.jpg', '2020-01-29 06:19:22', '2020-01-29 06:19:22'),
+(7, 3, NULL, 'images/9b7cac62e2a492f4283dd13fe35a9f8e.jpg', '2020-01-29 06:20:53', '2020-01-29 06:20:53'),
+(8, 3, NULL, 'images/66213dc2d4c61c280ccbbbe337037529.jpg', '2020-01-29 06:21:03', '2020-01-29 06:21:03'),
+(9, 3, NULL, 'images/45ce4b1aae1a4a7bbcf3a1e73b0bf7bc.jpg', '2020-01-29 06:21:36', '2020-01-29 06:21:36'),
+(10, 3, NULL, 'images/1c4e98480b1b411dfb6608ad829d56b2.jpg', '2020-01-29 06:21:50', '2020-01-29 06:21:50'),
+(11, 2, NULL, 'images/1a918c465fdec54f44fad793d66708d9.jpg', '2020-01-29 06:22:16', '2020-01-29 06:22:16'),
+(12, 2, NULL, 'images/624ef23c2678be0ed7253a596c3381ab.jpg', '2020-01-29 06:22:26', '2020-01-29 06:22:26'),
+(13, 1, NULL, 'images/b23d9567edff19539da4303ab1f9fb65.jpg', '2020-01-29 06:22:43', '2020-01-29 06:22:43'),
+(14, 1, NULL, 'images/4239e335bab06da153d458dfa2ee8b01.jpg', '2020-01-29 06:23:41', '2020-01-29 06:23:41'),
+(15, 18, NULL, 'images/51a9c1bb8aee32017746fe0a26b1d985.jpg', '2020-01-29 06:24:09', '2020-01-29 06:24:09'),
+(16, 18, NULL, 'images/3757f4d3b441e72077408660d6249c9e.jpg', '2020-01-29 06:24:20', '2020-01-29 06:24:20'),
+(17, 18, NULL, 'images/b08a1f7edbcc679332581ad0362f26a5.jpg', '2020-01-29 06:24:35', '2020-01-29 06:24:35'),
+(18, 18, NULL, 'images/bab8ede17564edd99536df527c47fac2.jpg', '2020-01-29 06:24:50', '2020-01-29 06:24:50'),
+(19, 4, NULL, 'images/738963c08a2f931da1778a23b001d939.jpg', '2020-01-29 06:26:00', '2020-01-29 06:26:00'),
+(20, 4, NULL, 'images/fc53d2e2708e0be1af42ab8e1fb3c6b3.jpg', '2020-01-29 06:26:08', '2020-01-29 06:26:08'),
+(21, 21, NULL, 'images/3b1657a931578fb1be55c9e9c40fc1d8.jpg', '2020-01-29 06:26:27', '2020-01-29 06:26:27'),
+(22, 21, NULL, 'images/51ca70f8ea06a135ce69b7a0f13ba29c.jpg', '2020-01-29 06:26:38', '2020-01-29 06:26:38'),
+(23, 21, NULL, 'images/fe6fa1e63ea6894ccc529e65697186f3.jpg', '2020-01-29 06:26:46', '2020-01-29 06:26:46'),
+(24, 21, NULL, 'images/8f383a5cfb58b21ac79bf0a3f77f2df1.jpg', '2020-01-29 06:27:02', '2020-01-29 06:27:02'),
+(25, 35, NULL, 'images/6c1541696834d967ff943722a4ce0a93.jpg', '2020-01-29 06:34:20', '2020-01-29 06:34:20'),
+(26, 35, NULL, 'images/4b139deb2f5c3ba9a685586c3aaf6208.jpg', '2020-01-29 06:34:28', '2020-01-29 06:34:28'),
+(27, 35, NULL, 'images/47b43d4fbbfd5f60b63cde4e5322c37c.jpg', '2020-01-29 06:34:37', '2020-01-29 06:34:37'),
+(28, 35, NULL, 'images/4c5407e7265c6b5ed6af8a28bf0dface.jpg', '2020-01-29 06:34:46', '2020-01-29 06:34:46'),
+(29, 10, NULL, 'images/f20265de4ddd19a4b8a796ea633a984d.jpg', '2020-01-29 06:36:14', '2020-01-29 06:36:14'),
+(30, 10, NULL, 'images/5a9e50ca6e1f681f16b1bcc6218ca33a.jpg', '2020-01-29 06:36:24', '2020-01-29 06:36:24'),
+(31, 10, NULL, 'images/55ed40ab479dbdcd12ca2e8b044fd92e.jpg', '2020-01-29 06:36:34', '2020-01-29 06:36:34'),
+(32, 10, NULL, 'images/efab21d46b08280325536c560bf8a4f4.jpg', '2020-01-29 06:36:42', '2020-01-29 06:36:42'),
+(33, 20, NULL, 'images/8c357d55bcf5ce922b5f05d5cc9dcfba.jpg', '2020-01-29 06:37:48', '2020-01-29 06:37:48'),
+(34, 20, NULL, 'images/0c8645a91017ca9e9ed5b05a91b2e919.jpg', '2020-01-29 06:37:55', '2020-01-29 06:37:55'),
+(35, 20, NULL, 'images/04668d561003a19b52568984824d6196.jpg', '2020-01-29 06:38:05', '2020-01-29 06:38:05'),
+(36, 20, NULL, 'images/b22c0650a27e3625d3b70be6104c8e4a.jpg', '2020-01-29 06:38:13', '2020-01-29 06:38:13'),
+(37, 19, NULL, 'images/2cf04981e681329c41537a39f2431295.jpg', '2020-01-29 06:38:30', '2020-01-29 06:38:30'),
+(38, 19, NULL, 'images/95632fb936af3a119652ee9e4beb0009.jpg', '2020-01-29 06:38:38', '2020-01-29 06:38:38'),
+(39, 19, NULL, 'images/2da0c9345411357e9240a91608df1d2f.jpg', '2020-01-29 06:38:48', '2020-01-29 06:38:48'),
+(40, 19, NULL, 'images/e582dd0aa55e8fbabeb5ea0b76105426.jpg', '2020-01-29 06:38:56', '2020-01-29 06:38:56'),
+(41, 23, NULL, 'images/938e76c5440b40e1319eea3fbfa64609.jpg', '2020-01-29 06:39:36', '2020-01-29 06:39:36'),
+(42, 23, NULL, 'images/1f25b92b637f1b8426a54323fb63ffad.jpg', '2020-01-29 06:39:44', '2020-01-29 06:39:44'),
+(43, 23, NULL, 'images/6ec87817c7e3684d1cf5c670b73aa568.jpg', '2020-01-29 06:39:51', '2020-01-29 06:39:51'),
+(44, 23, NULL, 'images/fa24454d283af4c88a20e65de7c6b5a5.jpg', '2020-01-29 06:40:03', '2020-01-29 06:40:03'),
+(45, 6, NULL, 'images/70fc74a56b64c8e895b6105b7b38e829.jpg', '2020-01-29 06:40:28', '2020-01-29 06:40:28'),
+(46, 6, NULL, 'images/00e73956382c3e2f689125fe8262a70d.jpg', '2020-01-29 06:40:36', '2020-01-29 06:40:36'),
+(47, 5, NULL, 'images/3b2daa2e9f0b9c27d5a86dd5829c6826.jpg', '2020-01-29 06:40:54', '2020-01-29 06:40:54'),
+(48, 5, NULL, 'images/49f197395eea9456bcee6dbb8db7bde0.jpg', '2020-01-29 06:41:00', '2020-01-29 06:41:00'),
+(49, 13, NULL, 'images/8fa245469b2a1984baa8912618ea15eb.jpg', '2020-01-29 06:41:21', '2020-01-29 06:41:21'),
+(50, 13, NULL, 'images/1d13b2ae55e7babcba888edc4bc1aac7.jpg', '2020-01-29 06:41:28', '2020-01-29 06:41:28'),
+(51, 13, NULL, 'images/478bd57c2711b5b6485400e5e537a358.jpg', '2020-01-29 06:41:37', '2020-01-29 06:41:37'),
+(52, 13, NULL, 'images/d0fb836ecad89f24fcaa9f5d68236605.jpg', '2020-01-29 06:41:48', '2020-01-29 06:41:48'),
+(53, 11, NULL, 'images/aa4f8f184409ece00a79b975cba230e7.jpg', '2020-01-29 06:42:08', '2020-01-29 06:42:08'),
+(54, 11, NULL, 'images/e8301b93813405168adc747283ad1ed0.jpg', '2020-01-29 06:42:17', '2020-01-29 06:42:17'),
+(55, 11, NULL, 'images/b7fcd60bf7424cc9affd8e64d0075786.jpg', '2020-01-29 06:42:24', '2020-01-29 06:42:24'),
+(56, 11, NULL, 'images/583f0e0100c3701ea9b32e2f3702e2a7.jpg', '2020-01-29 06:42:32', '2020-01-29 06:42:32'),
+(57, 7, NULL, 'images/00ec84cbc34b667b575e3c33460832d2.jpg', '2020-01-29 06:42:47', '2020-01-29 06:42:47'),
+(58, 7, NULL, 'images/7a7d0885f4bb3c89b5090224eb79ab6d.jpg', '2020-01-29 06:42:55', '2020-01-29 06:42:55'),
+(59, 7, NULL, 'images/73f92322330400cf6ce451ff0a009d34.jpg', '2020-01-29 06:43:02', '2020-01-29 06:43:02'),
+(60, 7, NULL, 'images/a5cca0ab02439fa2233459001ff47499.jpg', '2020-01-29 06:43:09', '2020-01-29 06:43:09'),
+(61, 12, NULL, 'images/299d9e86b4085db163226a59c6c0f141.jpg', '2020-01-29 06:43:48', '2020-01-29 06:43:48'),
+(62, 12, NULL, 'images/ab5b5ccf7db64f942b8c931c8bcc6a9c.jpg', '2020-01-29 06:43:59', '2020-01-29 06:43:59'),
+(63, 12, NULL, 'images/2a43adf3bd0e11328e91f402bc0f635b.jpg', '2020-01-29 06:44:07', '2020-01-29 06:44:07'),
+(64, 12, NULL, 'images/631eec57b07ca26dca16f57ba4d09e53.jpg', '2020-01-29 06:44:14', '2020-01-29 06:44:14'),
+(65, 17, NULL, 'images/d1bbc00a1ef7a0339ae1004edc04a4a1.jpg', '2020-01-29 06:44:33', '2020-01-29 06:44:33'),
+(66, 17, NULL, 'images/2aedccf8dd1914e11b701443746f2b13.jpg', '2020-01-29 06:44:42', '2020-01-29 06:44:42'),
+(67, 17, NULL, 'images/c1f561d0e8fc8b9a121bb46bc4dfe7fe.jpg', '2020-01-29 06:44:50', '2020-01-29 06:44:50'),
+(68, 17, NULL, 'images/ab07fa435f9ea11d2680c40e33297f4c.jpg', '2020-01-29 06:44:58', '2020-01-29 06:44:58'),
+(69, 16, NULL, 'images/0dbf980adfe7963790e77714263deb8d.jpg', '2020-01-29 06:45:14', '2020-01-29 06:45:14'),
+(70, 16, NULL, 'images/8234b1a2aaad8feb80e4ffcc740d01ba.jpg', '2020-01-29 06:45:20', '2020-01-29 06:45:20'),
+(71, 16, NULL, 'images/5d7eabbc0ceeb0b54335c46ac111361c.jpg', '2020-01-29 06:45:28', '2020-01-29 06:45:28'),
+(72, 16, NULL, 'images/46e9cc037e0e81e871dd8ba874087b3a.jpg', '2020-01-29 06:45:35', '2020-01-29 06:45:35'),
+(73, 15, NULL, 'images/c545b5f5de58252e4cc4c06ff533b108.jpg', '2020-01-29 06:45:56', '2020-01-29 06:45:56'),
+(74, 15, NULL, 'images/be352ab27d947919f8c6aee350bd0437.jpg', '2020-01-29 06:46:05', '2020-01-29 06:46:05'),
+(75, 15, NULL, 'images/660d30aed13a840470232a1dfac8c50a.jpg', '2020-01-29 06:46:14', '2020-01-29 06:46:14'),
+(76, 15, NULL, 'images/8341772b9e8873197e8f999350595c69.jpg', '2020-01-29 06:46:24', '2020-01-29 06:46:24'),
+(77, 22, NULL, 'images/173fcd45e78e7b1b3dd98271ebe9e167.jpg', '2020-01-29 06:46:40', '2020-01-29 06:46:40'),
+(78, 22, NULL, 'images/7ccd627bd0e22ee6f06979dae17a75bc.jpg', '2020-01-29 06:46:48', '2020-01-29 06:46:48'),
+(79, 9, NULL, 'images/079c04db4c21f7dc029add7484e812d5.jpg', '2020-01-29 06:47:03', '2020-01-29 06:47:03'),
+(80, 9, NULL, 'images/4eafc0d68a3f531e9ca2136d2cd11a1d.jpg', '2020-01-29 06:47:13', '2020-01-29 06:47:13'),
+(81, 9, NULL, 'images/2899078d263296602d389bf8e16b4a5b.jpg', '2020-01-29 06:47:22', '2020-01-29 06:47:22'),
+(82, 9, NULL, 'images/abbc6e0ea36e55dc27b0c55540e4586f.jpg', '2020-01-29 06:47:31', '2020-01-29 06:47:31'),
+(83, 14, NULL, 'images/f049b88c5046f932dca7febe397c0542.jpg', '2020-01-29 06:48:04', '2020-01-29 06:48:04'),
+(84, 14, NULL, 'images/f5a41a183806d5309a087f31af273b86.jpg', '2020-01-29 06:48:15', '2020-01-29 06:48:15'),
+(85, 14, NULL, 'images/5b44b5b13be5567bc1251e46be397d4c.jpg', '2020-01-29 06:48:24', '2020-01-29 06:48:24'),
+(86, 14, NULL, 'images/4645d498a79f8cdaf84e982e42c659b0.jpg', '2020-01-29 06:48:32', '2020-01-29 06:48:32');
 
 -- --------------------------------------------------------
 
@@ -1242,6 +1765,28 @@ INSERT INTO `m_modalitas` (`id`, `modalitas`, `deskripsi`, `created_at`, `update
 (1, 'Digital Radiology', 'Digital Radiologi adalah jenis alat yang digunakan untuk pemeriksaan radiografi umum seperti: kepala, leher, tulang belakang, thorax, ektemitas atas dan bawah, abdomen dan tulang ekor.', '2020-01-07 23:21:32', '2020-01-12 06:30:27'),
 (2, 'Panoramik', 'Panoramik adalah jenis alat yang digunakan untuk pemeriksaan untuk melihat lebih jelas gambaran gigi dan jaringan lunak serta kelainan tulang di daerah mulut.', '2020-01-07 23:23:01', '2020-01-07 23:23:01'),
 (3, 'Computerized Tomography Scanning', 'Computerized Tomography Scanning (CT Scan) adalah pemeriksaan radiologi dengan teknologi canggih menggunakan sinar-X. CT scan telah menjadi uji pilihan dalam mendiagnosis beberapa kondisi mendesak dan muncul seperti pendarahan otak, emboli paru (penyumbatan dalam arteri paru-paru), diseksi aorta (robeknya dinding aorta), radang usus buntu, divertikulitis, dan batu ginjal.', '2020-01-07 23:23:25', '2020-01-12 06:30:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_modalitas_files`
+--
+
+CREATE TABLE `m_modalitas_files` (
+  `id` int(11) NOT NULL,
+  `modalitas_id` int(11) NOT NULL,
+  `filepath` varchar(200) DEFAULT NULL,
+  `file_name` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `m_modalitas_files`
+--
+
+INSERT INTO `m_modalitas_files` (`id`, `modalitas_id`, `filepath`, `file_name`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, 'images/83fc499c98c6a3b9553162d580fd5553.png', '2020-01-31 22:54:45', '2020-01-31 22:54:45');
 
 -- --------------------------------------------------------
 
@@ -1398,15 +1943,33 @@ ALTER TABLE `m_apd`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `m_apd_files`
+--
+ALTER TABLE `m_apd_files`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `m_jenis_pemeriksaan`
 --
 ALTER TABLE `m_jenis_pemeriksaan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `m_jenis_pemeriksaan_files`
+--
+ALTER TABLE `m_jenis_pemeriksaan_files`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `m_modalitas`
 --
 ALTER TABLE `m_modalitas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `m_modalitas_files`
+--
+ALTER TABLE `m_modalitas_files`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1436,13 +1999,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin_menu`
 --
 ALTER TABLE `admin_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=866;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1248;
 
 --
 -- AUTO_INCREMENT for table `admin_permissions`
@@ -1481,16 +2044,34 @@ ALTER TABLE `m_apd`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `m_apd_files`
+--
+ALTER TABLE `m_apd_files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `m_jenis_pemeriksaan`
 --
 ALTER TABLE `m_jenis_pemeriksaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `m_jenis_pemeriksaan_files`
+--
+ALTER TABLE `m_jenis_pemeriksaan_files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `m_modalitas`
 --
 ALTER TABLE `m_modalitas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `m_modalitas_files`
+--
+ALTER TABLE `m_modalitas_files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `m_risiko`
