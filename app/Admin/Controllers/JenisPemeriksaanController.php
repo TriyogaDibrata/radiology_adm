@@ -27,16 +27,28 @@ class JenisPemeriksaanController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new JenisPemeriksaan());
+        $grid->disableRowSelector();
 
-        $grid->column('id', __('Id'));
+        $no = 1;
+
+        // $grid->column('id', __('Id'));
+        $grid->id('No')->display(function($no){
+            return $no++;
+        });
         $grid->column('jenis_pemeriksaan', __('Jenis pemeriksaan'));
         $grid->column('persiapan_pasien', __('Persiapan pasien'));
         $grid->column('manfaat', __('Manfaat'));
-        $grid->column('modalitas', __('Modalitas'));
+        // $grid->column('modalitas', __('Modalitas'));
+        $grid->modalitas('Alat Radiologi')->display(function($modalitas){
+            return Modalitas::find($modalitas)->modalitas;
+        });
         $grid->column('deskripsi', __('Deskripsi'));
-        $grid->column('risiko', __('Risiko'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('risiko', __('Risiko'));
+        $grid->risiko('Dosis')->display(function($risiko){
+            return Risiko::find($risiko)->dosis;
+        });
+        // $grid->column('created_at', __('Created at'));
+        // $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -82,7 +94,7 @@ class JenisPemeriksaanController extends AdminController
         $form->textarea('manfaat', __('Manfaat'));
         $form->select('modalitas', 'Modalitas')->options($modalitas);
         $form->textarea('deskripsi', __('Deskripsi'));
-        $form->select('risiko', 'Dosis')->options($risiko); 
+        $form->select('risiko', 'Dosis')->options($risiko);
         return $form;
     }
 }

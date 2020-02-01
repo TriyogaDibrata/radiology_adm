@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('jenis-pemeriksaan', 'Api\PemeriksaanController@getList');
 Route::get('risiko', 'Api\PemeriksaanController@getRisiko');
+Route::get('apd', 'Api\PemeriksaanController@getApd');
+Route::get('alat-radiologi', 'Api\PemeriksaanController@getAlatRadiologi');

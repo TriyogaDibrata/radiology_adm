@@ -16,6 +16,7 @@ Route::group([
     $router->resource('jenis-pemeriksaans', JenisPemeriksaanController::class);
     $router->resource('modalitas', ModalitasController::class);
     $router->resource('apds', ApdController::class);
-
-
+    $router->resource('jenis-pemeriksaan-files', JenisPemeriksaanFilesController::class);
+    $router->resource('apd-files', ApdFilesController::class);
+    $router->resource('modalitas-files', ModalitasFilesController::class);
 });

@@ -26,11 +26,20 @@ class ApdController extends AdminController
     {
         $grid = new Grid(new Apd());
 
-        $grid->column('id', __('Id'));
-        $grid->column('apd', __('Apd'));
+        $grid->disableRowSelector();
+
+        $no = 1;
+
+        // $grid->column('id', __('Id'));
+        $grid->id('No')->display(function($no){
+            return $no++;
+        });
+
+        // $grid->column('id', __('Id'));
+        $grid->column('apd', __('Alat Perlindungan Diri'));
         $grid->column('deskripsi', __('Deskripsi'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('created_at', __('Created at'));
+        // $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -46,7 +55,7 @@ class ApdController extends AdminController
         $show = new Show(Apd::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('apd', __('Apd'));
+        $show->field('apd', __('Alat Perlindungan Diri'));
         $show->field('deskripsi', __('Deskripsi'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
@@ -63,7 +72,7 @@ class ApdController extends AdminController
     {
         $form = new Form(new Apd());
 
-        $form->text('apd', __('Apd'));
+        $form->text('apd', __('Alat Perlindungan Diri'));
         $form->ckeditor('deskripsi', __('Deskripsi'));
 
         return $form;

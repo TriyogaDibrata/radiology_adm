@@ -25,12 +25,17 @@ class ModalitasController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Modalitas());
+        $grid->disableRowSelector();
+        $no = 1;
 
-        $grid->column('id', __('Id'));
+        // $grid->column('id', __('Id'));
+        $grid->id('No')->display(function($no){
+            return $no++;
+        });
         $grid->column('modalitas', __('Modalitas'));
         $grid->column('deskripsi', __('Deskripsi'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('created_at', __('Created at'));
+        // $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }

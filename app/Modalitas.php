@@ -11,4 +11,10 @@ class Modalitas extends Model
     public function jenis_pemeriksaan(){
       return $this->hasOne('App\JenisPemeriksaan', 'id', 'modalitas');
     }
+
+    public function modalitas_files()
+    {
+        return $this->hasMany('App\ModalitasFiles', 'modalitas_id', 'id')
+       ->orderBy('id', 'desc');
+    }
 }
